@@ -1,0 +1,117 @@
+HTTP Requests for EmailService
+These examples demonstrate how to call your sendEmail action using .http format.
+
+# 1. Basic Email (Plain Text Only)
+# This request sends a simple email with only a plain text body.
+
+### Send Basic Email (Plain Text) - with html body ...
+POST http://localhost:4004/email/sendSmtpGmailEmail
+Content-Type: application/json
+
+{
+  "to": "krishnapk808@gmail.com",
+  "subject": "CDSW Test EGmail: Plain Text Only",
+  "body": "CDSW EGmail This is a test email sent from my CAP application handler, with only plain text content.",
+  "htmlBody": "<p>CDSW EGmail This is a test email sent from my CAP application handler, with only plain text content.</p>"
+}
+
+
+
+# 2. Basic Email (HTML Body Only)
+# This request sends an email with an HTML formatted body.
+
+### Send Basic Email (HTML Body)
+POST http://localhost:4004/email/sendSmtpGmailEmail
+Content-Type: application/json
+
+{
+  "to": "recipient@example.com",
+  "subject": "Test Email: HTML Body",
+  "htmlBody": "<h1>Hello from CAP!</h1><p>This is an <b>HTML</b> email sent from your Node.js CAP application.</p><p>It looks much nicer!</p>"
+}
+
+# 3. Basic Email (Both Plain Text and HTML Body)
+# Nodemailer will prioritize the htmlBody if both are provided, but body serves as a fallback for email clients that don't support HTML.
+
+### Send Basic Email (Plain Text and HTML)
+POST http://localhost:4004/email/sendSmtpGmailEmail
+Content-Type: application/json
+
+{
+  "to": "recipient@example.com",
+  "subject": "Test Email: Plain Text & HTML",
+  "body": "This is the plain text fallback. If you see this, your email client doesn't support HTML.",
+  "htmlBody": "<h2>Greetings!</h2><p>This email has <strong>both</strong> plain text and HTML versions. Your client should display this HTML.</p>"
+}
+
+
+# 4. Email with Single Attachment
+# Before running: Create a file named test.txt in your srv directory (e.g., srv/test.txt) with some content.
+
+### Send Email with Single Attachment
+POST http://localhost:4004/email/sendSmtpGmailEmail
+Content-Type: application/json
+
+{
+  "to": "krishnapk808@gmail.com",
+  "subject": "CDSGMW Test Email: With One Attachment",
+  "body": "CDSW EGmail This is a test email sent from my CAP application handler, with only plain text content.",
+  "htmlBody": "<p>CDSW EGmail This is a test email sent from my CAP application handler, with only plain text content.</p>",
+  "attachments": [
+    {
+      "filename": "packagehehejson.txt",
+      "path": "../srv/packagehehejson.txt",
+      "contentType": "text/plain"
+    }
+  ]
+}
+
+# 5. Email with Multiple Attachments
+# Before running: Create test.txt and image.png (or any other image file) in your srv directory.
+
+### Send Email with Multiple Attachments
+POST http://localhost:4004/email/sendSmtpGmailEmail
+Content-Type: application/json
+
+{
+  "to": "recipient@example.com",
+  "subject": "Test Email: With Multiple Attachments",
+  "htmlBody": "<p>Here are multiple files attached for your review:</p><ul><li>A text file</li><li>An image</li></ul>",
+  "attachments": [
+    {
+      "filename": "important-notes.txt",
+      "path": "./srv/test.txt",
+      "contentType": "text/plain"
+    },
+    {
+      "filename": "sample-image.png",
+      "path": "./srv/image.png",
+      "contentType": "image/png"
+    }
+  ]
+}
+
+# 6. Email to Multiple Recipients
+# Separate multiple recipient email addresses with a comma.
+
+### Send Email to Multiple Recipients
+POST http://localhost:4004/email/sendSmtpGmailEmail
+Content-Type: application/json
+
+{
+  "to": "recipient1@example.com, recipient2@example.com",
+  "subject": "Test Email: Multiple Recipients",
+  "body": "This email is sent to multiple recipients at once."
+}
+
+# 7. Missing Required Parameters (Error Scenario)
+# This request will trigger the validation error in your CAP service handler because subject is missing.
+
+### Error Scenario: Missing Subject
+POST http://localhost:4004/email/sendSmtpGmailEmail
+Content-Type: application/json
+
+{
+  "to": "recipient@example.com",
+  "body": "This email should fail because the subject is missing."
+}

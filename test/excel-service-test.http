@@ -1,0 +1,44 @@
+@baseTestUrl = http://localhost:4004
+
+
+### Generate Single Row Excel from 1-d strings array
+POST {{baseTestUrl}}/xlsxf/generateExcelRowReportBase64
+Content-Type: application/json
+
+{
+  "input": ["Name","Age","City","Country"],
+  "wantZipped" : 1
+}
+
+
+### Generate Table in Excel from 2-d strings array
+# POST {{baseTestUrl}}/xlsx/generateExcelReportBase64
+# Content-Type: application/json
+
+# {
+#   "data": [
+#     ["Name", "Age", "City"],
+#     ["Alice", "30", "New York"],
+#     ["Bob", "25", "London"]
+#   ],
+#   "zipped": false
+# }
+
+
+
+
+
+
+###--------------------------------------------------------------------
+
+# Below request not working
+# POST {{baseTestUrl}}/xlsx/GenerateSampleExcelFromStrings
+# Content-Type: application/json
+
+# {
+#   "input": ["Line 1", "Line 2", "Another row"]
+# }
+
+
+
+

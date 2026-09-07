@@ -1,0 +1,12 @@
+{
+    "name": "my-sns-webhook-srv",
+    "version": "1.0.0",
+    "description": "CAP Service for handling AWS SNS webhooks",
+    "cds": {
+      "requires": {
+        "SNSService": {
+          "kind": "rest"
+        }
+      }
+    }
+  }

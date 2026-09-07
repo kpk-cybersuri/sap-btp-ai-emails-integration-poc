@@ -1,0 +1,13 @@
+
+@baseTestUrl = http://localhost:4004
+
+### ------------------------------------------------------------------------
+### Test Hugging Face Vanilla Chat Action----------------------------------
+POST {{baseTestUrl}}/hf/askAI
+Content-Type: application/json
+
+{
+    "prompt": "What are the top software companies in terms of hiring"
+}
+
+### ------------------------------------------------------------------------

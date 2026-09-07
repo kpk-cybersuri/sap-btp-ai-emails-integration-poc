@@ -1,0 +1,76 @@
+@baseTestUrl = http://localhost:4004
+
+### 📥 Read DailyIdocData (auto-refresh if stale)
+GET {{baseTestUrl}}/idocdata/DailyIdocData?%24format=json
+Accept: application/json
+
+
+###----------------------------------------------------
+### 🔄 Manual refresh via action
+POST {{baseTestUrl}}/idocdata/refreshIdocsData
+Accept: application/json
+
+
+###----------------------------------------------------
+### Dynamic User Select Queries Test 1
+POST {{baseTestUrl}}/idocdata/checkDynamicQuery
+Content-Type: application/json
+
+{
+    "inputQuery" : "SELECT ID, DATE, MODULE, DIRECTION, MESTYP, SYSTEM, SUCESS_OAPI, FAIL_OAPI, SUCESS_OCPI, FAIL_OCPI, STATUSTEXT FROM DailyIdocData WHERE SUCESS_OAPI > 0 OR SUCESS_OCPI > 0"
+}
+
+
+###----------------------------------------------------
+### Dynamic User Select Queries Test 2
+POST {{baseTestUrl}}/idocdata/checkDynamicQuery
+Content-Type: application/json
+
+{
+    "inputQuery" : "SELECT DATE, DIRECTION, MESTYP, SYSTEM, SUCESS_OAPI, FAIL_OAPI, STATUSTEXT FROM DailyIdocData WHERE SUCESS_OAPI > 0"
+}
+
+
+###----------------------------------------------------
+### Dynamic User Select Queries Test 3
+POST {{baseTestUrl}}/idocdata/checkDynamicQuery
+Content-Type: application/json
+
+{
+    "inputQuery" : "SELECT MESTYP, FAIL_OAPI FROM DailyIdocData WHERE FAIL_OAPI > 0 GROUP BY MESTYP"
+}
+
+
+###----------------------------------------------------
+### Dynamic User Select Queries Test 4
+POST {{baseTestUrl}}/idocdata/checkDynamicQuery
+Content-Type: application/json
+
+{
+    "inputQuery" : "SELECT MESTYP, FAIL_OAPI FROM ABCD"
+}
+
+
+###----------------------------------------------------
+### Dynamic User Select Queries Test 5
+POST {{baseTestUrl}}/idocdata/checkDynamicQuery
+Content-Type: application/json
+
+{
+    "inputQuery" : "DELETE FROM DailyIdocData WHERE FAIL_OAPI > 0"
+}
+
+
+
+
+
+
+
+
+
+###
+
+# Expected response:
+# {
+#   "message": "Refreshed X records at 2025‑07‑14T12:34:56.789Z"
+# }

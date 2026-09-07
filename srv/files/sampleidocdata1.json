@@ -1,0 +1,162 @@
+[
+    {
+      "DIRECTION": "Outbound",
+      "MessageType": "MATMAS",
+      "OUTCOME": "Success",
+      "VKORG": "OAPI",
+      "Status text": "",
+      "COUNT": 239
+    },
+    {
+      "DIRECTION": "Outbound",
+      "MessageType": "MATMAS",
+      "OUTCOME": "Success",
+      "VKORG": "OCPI",
+      "Status text": "",
+      "COUNT": 65
+    },
+    {
+      "DIRECTION": "Outbound",
+      "MessageType": "MATMAS",
+      "OUTCOME": "Success",
+      "VKORG": "Genpact",
+      "Status text": "",
+      "COUNT": 1
+    },
+    {
+      "DIRECTION": "Inbound",
+      "MessageType": "MATMAS",
+      "OUTCOME": "Failure",
+      "VKORG": "OAPI",
+      "Status text": "Immediate processing was canceled",
+      "COUNT": 50
+    },
+    {
+      "DIRECTION": "Inbound",
+      "MessageType": "MATMAS",
+      "OUTCOME": "Failure",
+      "VKORG": "OCPI",
+      "Status text": "Immediate processing was canceled",
+      "COUNT": 6
+    },
+    {
+      "DIRECTION": "Inbound",
+      "MessageType": "MATMAS",
+      "OUTCOME": "Failure",
+      "VKORG": "GP",
+      "Status text": "Immediate processing was canceled",
+      "COUNT": 2
+    },
+    {
+      "DIRECTION": "Outbound",
+      "MessageType": "ORDERS",
+      "OUTCOME": "Success",
+      "VKORG": "OCPI",
+      "Status text": "",
+      "COUNT": 1
+    },
+    {
+      "DIRECTION": "Inbound",
+      "MessageType": "ORDERS",
+      "OUTCOME": "Failure",
+      "VKORG": "OAPI",
+      "Status text": "&&, & &",
+      "COUNT": 2
+    },
+    {
+      "DIRECTION": "Outbound",
+      "MessageType": "ORDERS",
+      "OUTCOME": "Failure",
+      "VKORG": "Genpact",
+      "Status text": "Entry in outbound table not found",
+      "COUNT": 4
+    },
+    {
+      "DIRECTION": "Outbound",
+      "MessageType": "REMADV",
+      "OUTCOME": "Failure",
+      "VKORG": "OAPI",
+      "Status text": "Entry in outbound table not found",
+      "COUNT": 6
+    },
+    {
+      "DIRECTION": "Outbound",
+      "MessageType": "REMADV",
+      "OUTCOME": "Failure",
+      "VKORG": "OCPI",
+      "Status text": "Entry in outbound table not found",
+      "COUNT": 6
+    },
+    {
+      "DIRECTION": "Outbound",
+      "MessageType": "REMADV",
+      "OUTCOME": "Failure",
+      "VKORG": "GP",
+      "Status text": "Entry in outbound table not found",
+      "COUNT": 5
+    },
+    {
+      "DIRECTION": "Outbound",
+      "MessageType": "REMADV",
+      "OUTCOME": "Failure",
+      "VKORG": "OTHER",
+      "Status text": "& & & &",
+      "COUNT": 57
+    },
+    {
+      "DIRECTION": "Outbound",
+      "MessageType": "MATMAS2",
+      "OUTCOME": "Failure",
+      "VKORG": "OTHER",
+      "Status text": "Could not determine recipients for message type",
+      "COUNT": 5
+    },
+    {
+      "DIRECTION": "Outbound",
+      "MessageType": "MATMAS2",
+      "OUTCOME": "Success",
+      "VKORG": "OAPI",
+      "Status text": "",
+      "COUNT": 2
+    },
+    {
+      "DIRECTION": "Outbound",
+      "MessageType": "MATMAS2",
+      "OUTCOME": "Success",
+      "VKORG": "OCPI",
+      "Status text": "",
+      "COUNT": 1
+    },
+    {
+      "DIRECTION": "Outbound",
+      "MessageType": "MATMAS2",
+      "OUTCOME": "Success",
+      "VKORG": "GP",
+      "Status text": "",
+      "COUNT": 6
+    },
+    {
+      "DIRECTION": "Outbound",
+      "MessageType": "MATMAS2",
+      "OUTCOME": "Success",
+      "VKORG": "OTHER",
+      "Status text": "",
+      "COUNT": 1
+    },
+    {
+      "DIRECTION": "Outbound",
+      "MessageType": "ZHP_MESSAGE",
+      "OUTCOME": "Success",
+      "VKORG": "",
+      "Status text": "",
+      "COUNT": 5
+    },
+    {
+      "DIRECTION": "Outbound",
+      "MessageType": "ZRA_MESSAGE",
+      "OUTCOME": "Success",
+      "VKORG": "",
+      "Status text": "",
+      "COUNT": 9
+    }
+  ]

@@ -1,0 +1,56 @@
+@baseUrl = http://localhost:4004
+
+
+### ------------------------------------------------------------------------
+# BPA IDoc Mail Flow IMplemented in CAPM - FLOW1
+POST {{baseUrl}}/bpf/mailFlow1
+Content-Type: application/json
+
+{
+  "toEmail": "krishnapk808@gmail.com",
+  "optionalMessageText": "IDoc Errors Need to be Diagnosed and Fixed"  
+}
+
+
+### ------------------------------------------------------------------------
+# FLOW2 - CHART IMAGE GEN TEST
+POST {{baseUrl}}/bpf/flow2
+Content-Type: application/json
+
+{
+  "toEmail": "krishnapk808@gmail.com",
+  "optionalMessageText": "IDoc Errors Need to be Diagnosed and Fixed"  
+}
+
+
+### ------------------------------------------------------------------------
+# MAILFLOWLITE - Mail Flow Lite 
+POST {{baseUrl}}/bpf/mailFlowLite
+Content-Type: application/json
+
+{
+  "toMail": "krishnapk808@gmail.com",
+  "optionalMessageText": "IDoc Errors Need to be Diagnosed and Fixed"  
+}
+
+
+### ------------------------------------------------------------------------
+# IDOC WORK FLOW - 1
+POST {{baseUrl}}/bpf/idocwf1
+Content-Type: application/json
+
+{
+  "toMail": "krishnapk808@gmail.com",
+  "optionalMessageText": "IDoc Errors Need to be Diagnosed and Fixed"  
+}
+
+
+### ------------------------------------------------------------------------
+# IDOC WORK FLOW - 1
+POST {{baseUrl}}/bpf/idocwf1
+Content-Type: application/json
+
+{
+  "toMail": "pranavkrishna5by6@gmail.com",
+  "optionalMessageText": "IDoc Errors Need to be Diagnosed and Fixed"  
+}

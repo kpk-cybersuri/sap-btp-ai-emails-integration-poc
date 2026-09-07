@@ -1,0 +1,5 @@
+@baseTestUrl = http://localhost:4004
+
+### ------------------------------------------------------------------------
+### Testing  TestCheck Function ----------------------------------
+GET {{baseTestUrl}}/check/testCheck()

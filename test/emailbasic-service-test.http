@@ -1,0 +1,93 @@
+@baseTestUrl = http://localhost:4004
+
+### Test Send Email - with attachment
+POST {{baseTestUrl}}/email/sendEmail
+Content-Type: application/json
+
+{
+  "to":["pranavkrishna5by6@gmail.com"],
+  "subject":"CAP Test Mail sent",
+  "body":"Via Domain Text version - has attchment",
+  "htmlBody":"<h1>Check Email<h1/><p>Via Domain  HTML version - has attachment</p>",
+  "shouldObserveReplies" : "True",
+  "attachmentBase64":"SGF2ZSBhIE5pY2UgRGF5",
+  "attachmentName":"okok.txt"
+}
+
+### ------------------------------------------------------------------------
+### Test Send Email - withOUT attachment
+POST {{baseTestUrl}}/email/sendEmail
+Content-Type: application/json
+
+{
+  "to":["pranavkrishna5by6@gmail.com"],
+  "subject":"Hello CAPM Test 2",
+  "body":"Text version - No attachment",
+  "htmlBody":"<h1>HTML version</h1><p>NO attachment</p>",
+  "shouldObserveReplies" : "True",
+  "attachmentBase64":"",
+  "attachmentName":""
+}
+
+
+### ------------------------------------------------------------------------
+### Test simple SMTP Email
+POST {{baseTestUrl}}/email/sendSimpleSmtpEmail
+Content-Type: application/json
+
+{
+  "to": "pranavkrishna5by6@gmail.com",
+  "subject": "Hello SMTP CAPM Test 2",
+  "text": "Hi SMTP Text ok",
+}
+
+
+### 1. Successful Email Request
+POST {{baseTestUrl}}/email/sendSimpleSmtpEmail
+Content-Type: application/json
+
+{
+  "to": "pranavkrishna5by6@gmail.com",
+  "subject": "Test from CAP Service",
+  "text": "This is testing the class-based handler implementation"
+}
+
+
+### ------------------------------------------------------------------------
+### Test Send Email - Otsuka SMTP
+POST {{baseTestUrl}}/email/sendSmtpOtsukaEmail
+Content-Type: application/json
+
+{
+  "to":["pranavkrishna5by6@gmail.com"],
+  "subject":"Hello CAPM Test :) ",
+  "body":"Text version - Check attachment too",
+  "htmlBody":"<h1>HTML version</h1><p>check attachment too</p>",
+  "attachmentBase64":"SGF2ZSBhIE5pY2UgRGF5",
+  "attachmentName":"hi.txt"
+}
+
+
+# ### SubscriptionConfirmation
+# POST {{baseTestUrl}}/email/processBPAMailReplyComplete
+# Content-Type: application/json
+# x-amz-sns-message-type: SubscriptionConfirmation
+
+# {
+#   "payload" : {
+#     "Token": "TEST_TOKEN",
+#     "TopicArn": "arn:aws:sns:...:InboundReplies"
+#   }
+# }
+
+# ### Notification
+# POST {{baseTestUrl}}/email/processBPAMailReplyComplete
+# Content-Type: application/json
+# x-amz-sns-message-type: Notification
+
+# {
+#   "payload" : {
+#     "Message": "{\"convId\":\"123\",\"emailBody\":\"Hello world\"}"
+#   }
+# }
+

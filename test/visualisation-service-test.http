@@ -1,0 +1,11 @@
+@baseTestUrl = http://localhost:4004
+
+### Test 1: Get the full HTML page with chart
+# The 'needfullHtml' parameter is passed in the URL
+GET {{baseTestUrl}}/visuals/generateBarChart(needfullHtml=true)
+Accept: text/html
+
+### Test 2: Get only the chart HTML content
+# The 'needfullHtml' parameter is passed in the URL
+GET {{baseTestUrl}}/visuals/generateBarChart(needfullHtml=false)
+Accept: text/html

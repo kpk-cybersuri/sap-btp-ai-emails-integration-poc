@@ -1,0 +1,60 @@
+@prodUrl = https://genpact-llc-rpa-jhiclf65-dev-gobridge4tasks1-srv.cfapps.us10-001.hana.ondemand.com
+
+@baseTestUrl = http://localhost:4004
+
+### SNS Subscription Confirmation Test
+# This simulates the initial request SNS sends when you create a subscription.
+# You would get the 'SubscribeURL' from your CAP app logs.
+POST {{prodUrl}}/snswh/HandleSnsNotification
+Content-Type: application/json
+Accept: application/json
+
+{
+    "Type": "SubscriptionConfirmation",
+    "MessageId": "EXAMPLE-MESSAGE-ID-12345",
+    "Token": "2336412f37fb687f5d51e6e2417d0c345339",
+    "TopicArn": "arn:aws:sns:us-east-1:123456789012:MyCapAppNotifications",
+    "Message": "You have chosen to subscribe to the topic MyCapAppNotifications.\nTo confirm the subscription, visit the SubscribeURL included in this message.",
+    "SubscribeURL": "http://g.co/cloud/sns/subscribe?token=2336412f37fb687f5d51e6e2417d0c345339&topicARN=arn:aws:sns:us-east-1:123456789012:MyCapAppNotifications",
+    "Timestamp": "2025-07-30T17:00:00.000Z",
+    "SignatureVersion": "1",
+    "Signature": "EXAMPLE-SIGNATURE-STRING",
+    "SigningCertURL": "https://sns.us-east-1.amazonaws.com/SimpleNotificationService-EXAMPLE.pem"
+}
+
+### SNS Notification Test
+# This simulates an actual notification sent by SNS (e.g., from an SES email event).
+POST {{prodUrl}}/snswh/HandleSnsNotification
+Content-Type: application/json
+Accept: application/json
+
+{
+    "Type": "Notification",
+    "MessageId": "EXAMPLE-MESSAGE-ID-67890",
+    "TopicArn": "arn:aws:sns:us-east-1:123456789012:MyCapAppNotifications",
+    "Subject": "Email Received Notification",
+    "Message": "{\"source\":\"sender@example.com\",\"destination\":[\"recipient@yourdomain.com\"],\"mailId\":\"EXAMPLE-MAIL-ID\",\"timestamp\":\"2025-07-30T17:05:00.000Z\",\"subject\":\"Test Email from SES\",\"body\":\"This is the body of the test email sent from SES via SNS.\",\"commonHeaders\":{\"from\":[\"sender@example.com\"],\"to\":[\"recipient@yourdomain.com\"],\"returnPath\":\"sender@example.com\",\"messageId\":\"<EXAMPLE-MESSAGE-ID>\",\"date\":\"Wed, 30 Jul 2025 17:05:00 +0000\",\"subject\":\"Test Email from SES\"}}",
+    "Timestamp": "2025-07-30T17:05:00.000Z",
+    "SignatureVersion": "1",
+    "Signature": "ANOTHER-EXAMPLE-SIGNATURE-STRING",
+    "SigningCertURL": "https://sns.us-east-1.amazonaws.com/SimpleNotificationService-EXAMPLE.pem"
+}
+
+### SNS Unsubscribe Confirmation Test
+# This simulates an unsubscribe event from SNS.
+POST {{prodUrl}}/snswh/HandleSnsNotification
+Content-Type: application/json
+Accept: application/json
+
+{
+    "Type" : "UnsubscribeConfirmation",
+    "MessageId" : "EXAMPLE-MESSAGE-ID-UNSUB",
+    "Token" : "2336412f37fb687f5d51e6e2417d0c345339",
+    "TopicArn" : "arn:aws:sns:us-east-1:123456789012:MyCapAppNotifications",
+    "Message" : "You have unsubscribed from the topic MyCapAppNotifications.",
+    "SubscribeURL" : "http://g.co/cloud/sns/unsubscribe?token=2336412f37fb687f5d51e6e2417d0c345339&topicARN=arn:aws:sns:us-east-1:123456789012:MyCapAppNotifications",
+    "Timestamp" : "2025-07-30T17:10:00.000Z",
+    "SignatureVersion" : "1",
+    "Signature" : "THIRD-EXAMPLE-SIGNATURE-STRING",
+    "SigningCertURL" : "https://sns.us-east-1.amazonaws.com/SimpleNotificationService-EXAMPLE.pem"
+}

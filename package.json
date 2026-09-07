@@ -1,0 +1,94 @@
+{
+  "name": "GoBridge4Tasks1",
+  "version": "1.0.0",
+  "description": "A simple CAP project.",
+  "repository": "<Add your repository here>",
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+    "@aws-sdk/client-ses": "^3.840.0",
+    "@aws-sdk/client-sesv2": "^3.840.0",
+    "@cap-js/sqlite": "^1.11.1",
+    "@huggingface/inference": "^4.6.1",
+    "@sap/cds": "^8.9.4",
+    "@sap/xssec": "^4.9.0",
+    "aws-sdk": "^2.1692.0",
+    "axios": "^1.10.0",
+    "d3": "^7.9.0",
+    "d3-node": "^4.0.1",
+    "dotenv": "^16.6.1",
+    "exceljs": "^4.4.0",
+    "express": "^4",
+    "jszip": "^3.10.1",
+    "mime-types": "^3.0.1",
+    "nodemailer": "^7.0.5",
+    "puppeteer": "^24.15.0",
+    "sharp": "^0.34.3",
+    "sqlite": "^5.1.1",
+    "sqlite3": "^5.1.7",
+    "svg2png": "^4.1.1"
+  },
+  "devDependencies": {
+    "@cap-js/cds-types": "^0.10.0",
+    "@sap/cds-dk": "^8",
+    "@types/d3": "^7.4.3"
+  },
+  "scripts": {
+    "start": "cds-serve --in-memory?"
+  },
+  "build": {
+    "target": "gen",
+    "tasks": [
+      {
+        "for": "nodejs",
+        "src": "srv",
+        "options": {
+          "model": [
+            "db",
+            "srv"
+          ]
+        }
+      }
+    ]
+  },
+  "cds": {
+    "auth": {
+      "kind": "[mocked]",
+      "[development]": {
+        "kind": "[mocked]"
+      },
+      "[production]": {
+        "kind": "[mocked]"
+      }
+    },
+    "requires": {
+      "auth": "mocked",
+      "auth.restrict_all_services": false,
+      "db": {
+        "[development]": {
+          "kind": "sqlite",
+          "impl": "@cap-js/sqlite",
+          "credentials": {
+            "url": ":memory:"
+          }
+        },
+        "[production]": {
+          "kind": "sqlite",
+          "impl": "@cap-js/sqlite",
+          "credentials": {
+            "url": ":memory:"
+          }
+        }
+      }
+    },
+    "folders": {
+      "srv": "srv"
+    },
+    "server": "srv/server.js",
+    "protocols_hehe": {
+      "SnsWebhookService_hehe": {
+        "kind_hehe": "rest_hehe"
+      }
+    }
+  }
+}

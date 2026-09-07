@@ -1,0 +1,5 @@
+@baseTestUrl = http://localhost:4004
+
+### ------------------------------------------------------------------------
+### Test getJsonData Endpoint ----------------------------------------------
+GET {{baseTestUrl}}/xlsxf/getSampleJsonData()
